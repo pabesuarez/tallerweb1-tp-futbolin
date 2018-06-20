@@ -16,6 +16,8 @@ public class Cupos {
 	private String posicion;
 	@OneToOne
 	private Usuario usuario;
+	private Boolean estado;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -33,6 +35,12 @@ public class Cupos {
 	}
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
+	}
+	public Boolean getEstado() {
+		return estado;
+	}
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 
 	
