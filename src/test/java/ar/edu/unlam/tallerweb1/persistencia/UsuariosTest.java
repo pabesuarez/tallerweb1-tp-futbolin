@@ -75,6 +75,7 @@ public class UsuariosTest extends SpringTest{
 				.list();
 		
 		assertThat(resultadoPartidos.size()).isEqualTo(1);
+		getSession().close();
 				
 	}
 }

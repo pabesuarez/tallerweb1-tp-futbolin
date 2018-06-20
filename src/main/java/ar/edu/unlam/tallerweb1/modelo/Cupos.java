@@ -14,8 +14,8 @@ public class Cupos {
 	@OneToOne
 	private Partido partido;
 	private String posicion;
-	private Integer cantCupos;
-	
+	@OneToOne
+	private Usuario usuario;
 	public Integer getId() {
 		return id;
 	}
@@ -34,12 +34,7 @@ public class Cupos {
 	public void setPosicion(String posicion) {
 		this.posicion = posicion;
 	}
-	public Integer getCantCupos() {
-		return cantCupos;
-	}
-	public void setCantCupos(Integer cantCupos) {
-		this.cantCupos = cantCupos;
-	}
+
 	
 	
 }

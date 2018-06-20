@@ -14,6 +14,8 @@ public class Direccion {
 	private String localidad;
 	private String calle;
 	private Integer numero;
+	private String pais;
+	private String geolocalizacion;
 	
 	public Direccion (String provincia, String localidad, String calle, Integer numero)
 	{
@@ -52,6 +54,14 @@ public class Direccion {
 	}
 	public void setNumero(Integer numero) {
 		this.numero = numero;
+	}
+
+	public String getPais() {
+		return pais;
+	}
+
+	public void setPais(String pais) {
+		this.pais = pais;
 	}
 	
 }
