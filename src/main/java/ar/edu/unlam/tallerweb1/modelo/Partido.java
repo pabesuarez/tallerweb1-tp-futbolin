@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -12,13 +13,17 @@ public class Partido {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne
+	@ManyToOne
 	private Usuario organizador;
 	private String nombreCancha;
 	@OneToOne
 	private Direccion direccion;
 	private String descripcion;
 	private Date fecha;
+	
+	public Partido() {
+		
+	}
 	
 	public Long getId() {
 		return id;

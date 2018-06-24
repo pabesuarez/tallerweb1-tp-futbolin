@@ -7,7 +7,10 @@ import ar.edu.unlam.tallerweb1.modelo.Partido;
 public interface ServicioPartido {
 	
 	List<Partido> buscar();
+	Partido buscarId(long id);
 	void nuevoPartido(Partido partido);
 	void actualizar(Partido partido);
 	void eliminar(Partido partido);
+
+	
 }
