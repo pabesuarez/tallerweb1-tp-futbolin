@@ -9,13 +9,17 @@ import javax.persistence.Id;
 public class Direccion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private String provincia;
 	private String localidad;
 	private String calle;
 	private Integer numero;
 	private String pais;
 	private String geolocalizacion;
+	
+	public Direccion() {
+		
+	}
 	
 	public Direccion (String provincia, String localidad, String calle, Integer numero)
 	{
@@ -25,10 +29,10 @@ public class Direccion {
 		this.numero = numero;
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getProvincia() {
@@ -62,6 +66,14 @@ public class Direccion {
 
 	public void setPais(String pais) {
 		this.pais = pais;
+	}
+
+	public String getGeolocalizacion() {
+		return geolocalizacion;
+	}
+
+	public void setGeolocalizacion(String geolocalizacion) {
+		this.geolocalizacion = geolocalizacion;
 	}
 	
 }
