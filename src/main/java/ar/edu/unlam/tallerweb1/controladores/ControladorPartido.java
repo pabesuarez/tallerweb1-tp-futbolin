@@ -3,11 +3,9 @@ package ar.edu.unlam.tallerweb1.controladores;
 import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unlam.tallerweb1.modelo.Partido;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
 
 
@@ -30,11 +28,10 @@ public class ControladorPartido {
 		return new ModelAndView("buscarPartidos", model);
 	}
 	
-	@RequestMapping(path = "/detallePartido/{idPartido}")
-		public ModelAndView detallePartido(@PathVariable long idPartido) {
+	@RequestMapping(path = "/buscarCosas")
+		public ModelAndView resultadosBusqueda() {
 			ModelMap model = new ModelMap();
-			model.put("partido", servicioPartido.buscarId(idPartido));
-			return new ModelAndView("detallePartido",model);
+			return new ModelAndView("home",model);
 			
 		}
 	}

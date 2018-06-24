@@ -17,6 +17,7 @@ public class ServicioPartidoImpl implements ServicioPartido{
 
 	@Override
 	public List<Partido> buscar() {
+		// TODO Auto-generated method stub
 		return servicioPartidoDao.buscar();
 	}
 
@@ -36,11 +37,6 @@ public class ServicioPartidoImpl implements ServicioPartido{
 	public void eliminar(Partido partido) {
 		servicioPartidoDao.eliminar(partido);
 		
-	}
-
-	@Override
-	public Partido buscarId(long id) {	
-		return servicioPartidoDao.buscarId(id);
 	}
 
 	
