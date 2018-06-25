@@ -11,6 +11,8 @@
 
 <body>
 
+
+
 	<table class="table">
 		<thead>
 			<tr>
@@ -18,6 +20,7 @@
 				<th>nombre de la cancha</th>
 				<th>ubicacion</th>
 				<th>descripcion</th>
+					<th>Finalizar</th>
 			</tr>
 		</thead>
 
@@ -28,9 +31,12 @@
 				<td>${partido.direccion.calle}${partido.direccion.numero},
 					${partido.direccion.localidad}</td>
 				<td>${partido.descripcion}</td>
+				<td><a href="/futbolin/finalizarPartido/${partido.id}">Finalizar Partido</a></td>
 			</tr>
 		</c:forEach>
 	</table>
+				
+		
 	
 	
 </body>

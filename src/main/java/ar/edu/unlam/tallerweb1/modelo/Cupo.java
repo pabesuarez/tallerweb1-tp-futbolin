@@ -16,6 +16,16 @@ public class Cupo {
 	private String posicion;
 	@OneToOne
 	private Usuario usuario;
+	
+
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
 	private Boolean estado;
 	
 	public Long getId() {
