@@ -7,6 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-puntaje guardado
+puntaje<br>
+
+
+golesComoArquero:${puntajeJugador.golesComoArquero}<br>
+golesComoDefensor:${puntajeJugador.golesComoDefensor}<br>
+golesComoDelantero:${puntajeJugador.golesComoDelantero}<br>
 </body>
 </html>

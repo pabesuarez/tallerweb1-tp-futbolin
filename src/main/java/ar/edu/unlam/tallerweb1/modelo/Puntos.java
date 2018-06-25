@@ -26,7 +26,8 @@ public class Puntos {
 	private Integer penalesErrados;
 	private Integer penalesAtajados;
 	
-	
+	@OneToOne
+	private Cupo cupo;
 	
 	public Cupo getCupo() {
 		return cupo;
@@ -36,8 +37,7 @@ public class Puntos {
 	}
 
 
-	@OneToOne
-	private Cupo cupo;
+
 	
 	public Long getId() {
 		return id;

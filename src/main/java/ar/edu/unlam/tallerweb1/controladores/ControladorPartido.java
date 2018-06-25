@@ -103,6 +103,9 @@ public class ControladorPartido {
 	@RequestMapping(path = "/PuntajeGuardado", method = RequestMethod.POST)
 	public ModelAndView CalificacionGuardada(@ModelAttribute("objetoPuntos") Puntos puntaje, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
+	
+		
+		model.put("puntajeJugador", puntaje);
 
 		return new ModelAndView("PuntajeGuardado", model);
 	}

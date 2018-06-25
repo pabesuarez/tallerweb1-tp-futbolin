@@ -28,7 +28,7 @@ ${claveApellido}
  					<div>golesComoArquero:<form:input path="golesComoArquero" type="text"  class="form-control"/></div>
  					<div>golesComoDefensor:<form:input path="golesComoDefensor" type="text"  class="form-control"/></div>
  					<div>golesComoDelantero:<form:input path="golesComoDelantero" type="text"  class="form-control"/></div>
- 					<div>golesComoVolante:<form:input path="golesComoVolante" value="${claveIdCupo}" type="text"  class="form-control"/></div>
+ 					<div>golesComoVolante:<form:input path="golesComoVolante"  type="text"  class="form-control"/></div>
  					<div>golesDePenal:<form:input path="golesDePenal" type="text"  class="form-control"/></div>
  					<div>golesEnContra:<form:input path="golesEnContra" type="text"  class="form-control"/></div>
  					<div>golesRecibidos:<form:input path="golesRecibidos" type="text"  class="form-control"/></div>
@@ -36,6 +36,7 @@ ${claveApellido}
  					<div>penalesErrados:<form:input path="penalesErrados" type="text"  class="form-control"/></div>
  					<div>tarjetaRoja:<form:input path="tarjetaRoja" type="text"  class="form-control"/></div>
  					<div>tarjetasAmarillas:<form:input path="tarjetasAmarillas" type="text"  class="form-control"/></div>
+ 					<div>idCupo:<form:input path="cupo.id" type="text"  value="${claveIdCupo}" class="form-control"/></div>
 
 					
 					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Guardar</button>
