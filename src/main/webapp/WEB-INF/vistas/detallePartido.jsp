@@ -20,6 +20,30 @@
 			<button>quiero unirme al partido</button>
 
 	<div id="map" style="width: 100%; height: 400px;"></div>
+	
+	
+	<h3>Cupos diponibles</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Posicion</th>
+				<th></th>
+			</tr>
+		</thead>
+
+		<c:forEach items="${cupos}" var="cupo">
+			<tr>
+				<td>${cupo.posicion}</td>
+				<td><button>solicitar</button></td>
+			</tr>
+		</c:forEach>
+		
+	</table>
+	
+	
+	
+	
+	
 	<script>
 
 function initMap() {

@@ -43,6 +43,11 @@ public class ServicioPartidoImpl implements ServicioPartido{
 		return servicioPartidoDao.buscarId(id);
 	}
 
+	@Override
+	public List<Partido> buscarPorUsuario(long uid) {
+		return servicioPartidoDao.buscarPorUsuario(uid);
+	}
+
 	
 
 }

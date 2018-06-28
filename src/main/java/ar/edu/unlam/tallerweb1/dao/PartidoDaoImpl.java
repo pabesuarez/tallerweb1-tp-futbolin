@@ -22,7 +22,7 @@ public class PartidoDaoImpl implements PartidoDao {
 			.createCriteria(Partido.class)
 			.list();
 	}
-
+	
 	@Override
 	public void nuevoPartido(Partido partido) {
 		sessionFactory.getCurrentSession()
@@ -47,6 +47,14 @@ public class PartidoDaoImpl implements PartidoDao {
 				.createCriteria(Partido.class)
 				.add(Restrictions.eq("id", id))
 				.uniqueResult();
+	}
+
+	@Override
+	public List<Partido> buscarPorUsuario(long uid) {
+		final Session session = sessionFactory.getCurrentSession();
+		return session.createCriteria(Partido.class)
+				.add(Restrictions.eq("organizador.id", uid ))
+				.list();
 	}
 
 }

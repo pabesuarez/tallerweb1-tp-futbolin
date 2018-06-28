@@ -49,6 +49,7 @@ public class ControladorPartido {
 		public ModelAndView detallePartido(@PathVariable long idPartido) {
 			ModelMap model = new ModelMap();
 			model.put("partido", servicioPartido.buscarId(idPartido));
+			model.put("cupos", servicioCupo.listarCuposPorPartido(idPartido));
 			return new ModelAndView("detallePartido",model);
 			
 		}
