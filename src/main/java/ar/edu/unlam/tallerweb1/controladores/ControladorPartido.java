@@ -18,6 +18,7 @@ import ar.edu.unlam.tallerweb1.modelo.Puntos;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCupo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPuntos;
 import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
 
 
@@ -26,6 +27,10 @@ public class ControladorPartido {
 	
 	@Inject
 	private ServicioPartido servicioPartido;
+	
+	
+	@Inject
+	private ServicioPuntos servicioPuntos;
 	
 	@Inject
 	private ServicioUsuario servicioUsuario;
@@ -105,8 +110,11 @@ public class ControladorPartido {
 	public ModelAndView CalificacionGuardada(@ModelAttribute("objetoPuntos") Puntos puntaje, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 	
+		model.put("objetoPuntos", puntaje);
 		
-		model.put("puntajeJugador", puntaje);
+		//servicio que haga la conversion a puntos y devuelva un solo valor de puntuacion
+		
+		servicioPuntos.Alta(puntaje);
 
 		return new ModelAndView("PuntajeGuardado", model);
 	}

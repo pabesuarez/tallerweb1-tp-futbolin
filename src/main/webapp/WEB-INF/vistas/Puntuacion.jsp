@@ -24,7 +24,7 @@ ${claveApellido}
 
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
 
-					<div>id:<form:input path="id" type="text"  class="form-control"/></div>
+
  					<div>golesComoArquero:<form:input path="golesComoArquero" type="text"  class="form-control"/></div>
  					<div>golesComoDefensor:<form:input path="golesComoDefensor" type="text"  class="form-control"/></div>
  					<div>golesComoDelantero:<form:input path="golesComoDelantero" type="text"  class="form-control"/></div>
