@@ -10,39 +10,138 @@
 
 </head>
 <body>
-<h3>Jugador</h3>
-${claveIdCupo}
-${claveNombre}
-${claveApellido}
+
 
 	<div class = "container">
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
+
+<c:if test = "${clavePosicion=='delantero'}">
+
 <form:form action="/futbolin/PuntajeGuardado" method="POST" modelAttribute="objetoPuntos">
 			    	<h3 class="form-signin-heading">Puntaje</h3>
-			
 
-					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-
-
- 					<div>golesComoArquero:<form:input path="golesComoArquero" type="text"  class="form-control"/></div>
- 					<div>golesComoDefensor:<form:input path="golesComoDefensor" type="text"  class="form-control"/></div>
- 					<div>golesComoDelantero:<form:input path="golesComoDelantero" type="text"  class="form-control"/></div>
- 					<div>golesComoVolante:<form:input path="golesComoVolante"  type="text"  class="form-control"/></div>
- 					<div>golesDePenal:<form:input path="golesDePenal" type="text"  class="form-control"/></div>
- 					<div>golesEnContra:<form:input path="golesEnContra" type="text"  class="form-control"/></div>
- 					<div>golesRecibidos:<form:input path="golesRecibidos" type="text"  class="form-control"/></div>
- 					<div>penalesAtajados:<form:input path="penalesAtajados" type="text"  class="form-control"/></div>
- 					<div>penalesErrados:<form:input path="penalesErrados" type="text"  class="form-control"/></div>
- 					<div>tarjetaRoja:<form:input path="tarjetaRoja" type="text"  class="form-control"/></div>
- 					<div>tarjetasAmarillas:<form:input path="tarjetasAmarillas" type="text"  class="form-control"/></div>
- 					<div>idCupo:<form:input path="cupo.id" type="text"  value="${claveIdCupo}" class="form-control"/></div>
-
-					
+					<div><form:input path="golesComoArquero" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="golesComoDefensor" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="golesComoVolante"  type="hidden" value="0" class="form-control"/></div>
+ 					<div><form:input path="golesRecibidos" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="penalesAtajados" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="cupo.id" type="hidden"  value="${claveIdCupo}" class="form-control"/></div>			
+ 													
+ 					<div>golesComoDelantero:<form:input path="golesComoDelantero" type="text"  class="form-control" required="required"/></div>			
+ 					<div>golesDePenal:<form:input path="golesDePenal" type="text"  class="form-control" required="required"/></div>
+ 					<div>golesEnContra:<form:input path="golesEnContra" type="text"  class="form-control" required="required"/></div>
+ 					<div>penalesErrados:<form:input path="penalesErrados" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetaRoja:<form:input path="tarjetaRoja" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetasAmarillas:<form:input path="tarjetasAmarillas" type="text"  class="form-control" required="required"/></div>
+ 
 					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Guardar</button>
-			
- 		
+
 				</form:form>
+				</c:if>
+				
+				<c:if test = "${clavePosicion=='volante'}">
+
+<form:form action="/futbolin/PuntajeGuardado" method="POST" modelAttribute="objetoPuntos">
+			    	<h3 class="form-signin-heading">Puntaje</h3>
+
+					<div><form:input path="golesComoArquero" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="golesComoDefensor" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="golesComoDelantero" type="hidden" value="0" class="form-control"/></div>
+ 					<div><form:input path="golesRecibidos" type="hidden" value="0" class="form-control"/></div>
+ 					<div><form:input path="penalesAtajados" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="cupo.id" type="hidden"  value="${claveIdCupo}" class="form-control"/></div>
+ 					
+ 					<div>golesComoVolante:<form:input path="golesComoVolante"  type="text"  class="form-control" required="required"/></div>
+ 					<div>golesDePenal:<form:input path="golesDePenal" type="text"  class="form-control" required="required"/></div>
+ 					<div>golesEnContra:<form:input path="golesEnContra" type="text"  class="form-control" required="required"/></div>
+ 					<div>penalesErrados:<form:input path="penalesErrados" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetaRoja:<form:input path="tarjetaRoja" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetasAmarillas:<form:input path="tarjetasAmarillas" type="text"  class="form-control" required="required"/></div>
+ 
+ 
+					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Guardar</button>
+
+				</form:form>
+				</c:if>
+				
+				
+					<c:if test = "${clavePosicion=='defensor'}">
+
+<form:form action="/futbolin/PuntajeGuardado" method="POST" modelAttribute="objetoPuntos">
+			    	<h3 class="form-signin-heading">Puntaje</h3>
+
+					<div><form:input path="golesComoArquero" type="hidden" value="0"  class="form-control"/></div>
+					<div><form:input path="golesComoDelantero" type="hidden" value="0"  class="form-control"/></div>
+ 					<div><form:input path="golesComoVolante"  type="hidden" value="0"  class="form-control"/></div>
+					<div><form:input path="golesRecibidos" type="hidden" value="0"  class="form-control"/></div>
+					<div><form:input path="penalesAtajados" type="hidden" value="0"  class="form-control"/></div>
+					<div><form:input path="cupo.id" type="hidden"  value="${claveIdCupo}" class="form-control"/></div>
+					
+
+ 					<div>golesComoDefensor:<form:input path="golesComoDefensor" type="text"  class="form-control" required="required"/></div>
+ 					<div>golesDePenal:<form:input path="golesDePenal" type="text"  class="form-control" required="required"/></div>
+ 					<div>golesEnContra:<form:input path="golesEnContra" type="text"  class="form-control" required="required"/></div>
+ 					<div>penalesErrados:<form:input path="penalesErrados" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetaRoja:<form:input path="tarjetaRoja" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetasAmarillas:<form:input path="tarjetasAmarillas" type="text"  class="form-control" required="required"/></div>
+ 					
+ 
+					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Guardar</button>
+
+				</form:form>
+				</c:if>
+				
+				
+				
+				
+				<c:if test = "${clavePosicion=='arquero'}">
+
+<form:form action="/futbolin/PuntajeGuardado" method="POST" modelAttribute="objetoPuntos">
+			    	<h3 class="form-signin-heading">Puntaje</h3>
+
+
+					<div><form:input path="golesComoDefensor"  type="hidden" value="0"   class="form-control"/></div>
+ 					<div><form:input path="golesComoDelantero" type="hidden" value="0"   class="form-control"/></div>
+ 					<div><form:input path="golesComoVolante"   type="hidden" value="0"   class="form-control"/></div>
+					<div><form:input path="cupo.id" type="hidden"  value="${claveIdCupo}" class="form-control"/></div>
+
+
+ 					<div>golesComoArquero:<form:input path="golesComoArquero" type="text"  class="form-control" required="required"/></div>
+ 					<div>golesDePenal:<form:input path="golesDePenal" type="text"  class="form-control" required="required"/></div>
+ 					<div>golesEnContra:<form:input path="golesEnContra" type="text"  class="form-control" required="required"/></div>
+ 					<div>golesRecibidos:<form:input path="golesRecibidos" type="text"  class="form-control" required="required"/></div>
+ 					<div>penalesAtajados:<form:input path="penalesAtajados" type="text"  class="form-control" required="required"/></div>
+ 					<div>penalesErrados:<form:input path="penalesErrados" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetaRoja:<form:input path="tarjetaRoja" type="text"  class="form-control" required="required"/></div>
+ 					<div>tarjetasAmarillas:<form:input path="tarjetasAmarillas" type="text"  class="form-control" required="required"/></div>
+
+					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Guardar</button>
+
+				</form:form>
+				</c:if>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 						</div>
 		</div>

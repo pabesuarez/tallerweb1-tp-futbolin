@@ -80,8 +80,8 @@ public class ControladorPartido {
 	
 		//le paso asigno el idcupo a un objeto puntaje,ese puntaje me va a guardar los campos de puntos para ese idcupo 
 		
-	@RequestMapping(path = "/calificarJugador/{idCupo}/{nombre}/{apellido}")
-	public ModelAndView calificarJugador(@PathVariable long idCupo,@PathVariable String nombre,@PathVariable String apellido) {
+	@RequestMapping(path = "/calificarJugador/{idCupo}/{nombre}/{apellido}/{posicion}")
+	public ModelAndView calificarJugador(@PathVariable long idCupo,@PathVariable String nombre,@PathVariable String apellido,@PathVariable String posicion) {
 			
 		ModelMap model = new ModelMap();
 		
@@ -95,7 +95,7 @@ public class ControladorPartido {
 		model.put("claveNombre", nombre);
 
 		model.put("claveApellido", apellido);
-		
+		model.put("clavePosicion", posicion);
 		
 		model.put("objetoPuntos", puntos);
 		
@@ -109,12 +109,19 @@ public class ControladorPartido {
 	@RequestMapping(path = "/PuntajeGuardado", method = RequestMethod.POST)
 	public ModelAndView CalificacionGuardada(@ModelAttribute("objetoPuntos") Puntos puntaje, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
+		
 	
-		model.put("objetoPuntos", puntaje);
+	//	model.put("objetoPuntos", puntaje);
+		
+		
 		
 		//servicio que haga la conversion a puntos y devuelva un solo valor de puntuacion
 		
 		servicioPuntos.Alta(puntaje);
+		
+		int Total=servicioPuntos.PuntajeResultado(puntaje);
+			model.put("total", Total);
+		
 
 		return new ModelAndView("PuntajeGuardado", model);
 	}

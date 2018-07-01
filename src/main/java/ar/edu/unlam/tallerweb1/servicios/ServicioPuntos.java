@@ -5,5 +5,6 @@ import ar.edu.unlam.tallerweb1.modelo.Puntos;
 public interface ServicioPuntos {
 	
 	public void Alta(Puntos puntos);
+	public Integer PuntajeResultado(Puntos puntos);
 
 }

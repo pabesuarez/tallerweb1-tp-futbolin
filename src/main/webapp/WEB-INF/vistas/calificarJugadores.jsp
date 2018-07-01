@@ -21,21 +21,21 @@
 		<thead>
 			<tr>
 			<th>IdCupo</th>
-			<th>IdUsuario</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
+				<th>Posicion</th>
 			</tr>
 		</thead>
 
 		<c:forEach items="${cupoClave}" var="item">
 			<tr>
 				<td>${item.id}</td>
-								<td>${item.usuario.id}</td>
 				<td>${item.usuario.nombre}</td>
 				<td>${item.usuario.apellido}</td>
+				<td>${item.posicion}</td>
 			
 				
-				<td><a href="/futbolin/calificarJugador/${item.id}/${item.usuario.nombre}/${item.usuario.apellido}">Calificar</a></td>
+				<td><a href="/futbolin/calificarJugador/${item.id}/${item.usuario.nombre}/${item.usuario.apellido}/${item.posicion}">Calificar</a></td>
 			</tr>
 		</c:forEach>
 	</table>

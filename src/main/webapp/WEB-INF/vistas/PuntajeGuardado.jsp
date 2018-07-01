@@ -10,8 +10,6 @@
 puntaje<br>
 
 
-golesComoArquero:${objetoPuntos.golesComoArquero}<br>
-golesComoDefensor:${objetoPuntos.golesComoDefensor}<br>
-golesComoDelantero:${objetoPuntos.golesComoDelantero}<br>
+${total}
 </body>
 </html>
