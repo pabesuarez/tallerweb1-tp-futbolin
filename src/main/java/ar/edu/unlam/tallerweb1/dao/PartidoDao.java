@@ -8,7 +8,7 @@ public interface PartidoDao {
 	public List<Partido> buscar();
 	public List<Partido> buscarPorUsuario(long uid);
 	public Partido buscarId(long id);
-	public void nuevoPartido(Partido partido);
+	public boolean nuevoPartido(Partido partido,long uid);
 	public void actualizar(Partido partido);
 	public void eliminar(Partido partido);
 }

@@ -1,11 +1,14 @@
 package ar.edu.unlam.tallerweb1.dao;
 
 import ar.edu.unlam.tallerweb1.modelo.Partido;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+
+
 import java.util.List;
 
 import javax.inject.Inject;
@@ -24,9 +27,14 @@ public class PartidoDaoImpl implements PartidoDao {
 	}
 	
 	@Override
-	public void nuevoPartido(Partido partido) {
+	public boolean nuevoPartido(Partido partido,long uid) {
+		Usuario organizador = (Usuario)sessionFactory.getCurrentSession().createCriteria(Usuario.class)
+							  .add(Restrictions.eq("Id",uid))
+							  .uniqueResult();
+		partido.setOrganizador(organizador);
 		sessionFactory.getCurrentSession()
 		.save(partido);
+		return true;
 	}
 
 	@Override

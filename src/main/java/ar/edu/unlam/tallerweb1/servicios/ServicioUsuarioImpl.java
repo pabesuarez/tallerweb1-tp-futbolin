@@ -2,8 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import javax.inject.Inject;
 
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,5 +20,11 @@ public class ServicioUsuarioImpl implements ServicioUsuario{
 	public Usuario buscarUsuarioPorId(Long idUsuario) {
 		return servicioUsuarioDao.buscarUsuarioPorId(idUsuario);
 	}
+
+	@Override
+	public boolean nuevoUsuario(Usuario usuario) {
+		return servicioUsuarioDao.nuevoUsuario(usuario);
+	}
+
 
 }

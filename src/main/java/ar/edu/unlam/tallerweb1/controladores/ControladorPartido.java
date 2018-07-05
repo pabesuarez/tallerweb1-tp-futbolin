@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Cupo;
+import ar.edu.unlam.tallerweb1.modelo.Partido;
 import ar.edu.unlam.tallerweb1.modelo.Puntos;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCupo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPuntos;
-import ar.edu.unlam.tallerweb1.servicios.ServicioUsuario;
+
 
 
 @Controller
@@ -32,14 +33,15 @@ public class ControladorPartido {
 	@Inject
 	private ServicioPuntos servicioPuntos;
 	
-	@Inject
-	private ServicioUsuario servicioUsuario;
+
 	@Inject
 	private ServicioCupo servicioCupo;
 
 	@RequestMapping("/crearPartido")
 	public ModelAndView CrearPartido() {
+		Partido partido = new Partido();
 		ModelMap model = new ModelMap();
+		model.put("partido",partido);
 		return new ModelAndView("crearPartido", model);
 	}
 	
@@ -124,6 +126,16 @@ public class ControladorPartido {
 		
 
 		return new ModelAndView("PuntajeGuardado", model);
+	}
+	
+	@RequestMapping(path = "/nuevoPartido",method=RequestMethod.POST)
+	public ModelAndView crear(@ModelAttribute("partido") Partido partido, HttpServletRequest request){
+		boolean registro = servicioPartido.nuevoPartido(partido,((long)request.getAttribute("uid")));
+		if(registro) {
+			return new ModelAndView("redirect:/index");
+		}else {
+			return null;
+		}
 	}
 	
 	}

@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 import ar.edu.unlam.tallerweb1.SpringTest;
-import ar.edu.unlam.tallerweb1.modelo.Direccion;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 
@@ -48,22 +47,19 @@ public class UsuariosTest extends SpringTest{
 		
 		Usuario usuario1 = new Usuario();
 		Partido partido1 = new Partido();
-		Direccion direccion1= new Direccion("buenos aires", "San justo", "arieta", 111);
+	//	Direccion direccion1= new Direccion("buenos aires", "San justo", "arieta", 111);
 		
-		partido1.setDireccion(direccion1);
+
 		partido1.setOrganizador(usuario1);
 		
 		Partido partido2 = new Partido();
 		Usuario usuario2 = new Usuario();
-		Direccion direccion2= new Direccion("capital federal", "capital federal", "triunvirato", 5400);
+	//	Direccion direccion2= new Direccion("capital federal", "capital federal", "triunvirato", 5400);
 		partido1.setOrganizador(usuario2);
-		partido2.setDireccion(direccion2);
 		
 		getSession().save(usuario1);
 		getSession().save(usuario2);
 		
-		getSession().save(direccion1);
-		getSession().save(direccion2);
 		
 		getSession().save(partido1);
 		getSession().save(partido2);

@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Partido {
@@ -16,15 +15,12 @@ public class Partido {
 	@ManyToOne
 	private Usuario organizador;
 	private String nombreCancha;
-	@OneToOne
-	private Direccion direccion;
+	private Long latitud;
+	private Long longitud;
 	private String descripcion;
 	private Date fecha;
 	
-	public Partido() {
-		
-	}
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -43,12 +39,6 @@ public class Partido {
 	public void setNombreCancha(String nombreCancha) {
 		this.nombreCancha = nombreCancha;
 	}
-	public Direccion getDireccion() {
-		return direccion;
-	}
-	public void setDireccion(Direccion direccion) {
-		this.direccion = direccion;
-	}
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -61,4 +51,19 @@ public class Partido {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
+	public Long getLatitud() {
+		return latitud;
+	}
+	public void setLatitud(Long latitud) {
+		this.latitud = latitud;
+	}
+	public Long getLongitud() {
+		return longitud;
+	}
+	public void setLongitud(Long longitud) {
+		this.longitud = longitud;
+	}
+	
+	
+	
 }

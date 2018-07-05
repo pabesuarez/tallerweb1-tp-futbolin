@@ -19,6 +19,7 @@
 				<div class="col-md-12">
 					<h3>Menu de prueba</h3>
 					<a href="loginprueba">login</a>
+					<a href="Registro">Nuevo Usuario</a>
 				</div>
 			</div>
 			
@@ -26,7 +27,7 @@
 				<div class="col-md-12">
 			    	<h3>Convertir direccion</h3>
 					<input id="direccion" type="text" class="form-control" />  		  
-					<button class="btn btn-lg btn-primary btn-block" onClick="convertir();"/>convertir</button>
+					<button class="btn btn-lg btn-primary btn-block" onClick="convertir();">convertir</button>
 					<span id="valor"></span>
 				</div>
 			</div>

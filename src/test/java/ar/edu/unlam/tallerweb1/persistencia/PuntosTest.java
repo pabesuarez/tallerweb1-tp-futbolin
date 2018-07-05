@@ -1,7 +1,6 @@
 package ar.edu.unlam.tallerweb1.persistencia;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
 
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
@@ -40,7 +39,7 @@ Integer puntajeTotal = p1.puntajeTotal();
 assertThat(puntajeTotal).isEqualTo(2);
 		
 		
-	;
+	
 	}
 
 }

@@ -21,8 +21,8 @@ public class ServicioPartidoImpl implements ServicioPartido{
 	}
 
 	@Override
-	public void nuevoPartido(Partido partido) {
-		servicioPartidoDao.nuevoPartido(partido);
+	public boolean nuevoPartido(Partido partido,long uid) {
+		return servicioPartidoDao.nuevoPartido(partido, uid);
 		
 	}
 

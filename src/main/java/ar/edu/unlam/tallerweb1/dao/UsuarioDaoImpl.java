@@ -50,6 +50,13 @@ public class UsuarioDaoImpl implements UsuarioDao {
 				.uniqueResult();
 	}
 
+	@Override
+	public boolean nuevoUsuario(Usuario usuario) {
+		sessionFactory.getCurrentSession()
+		.save(usuario);
+		return true;
+	}
+
 
 	
 	

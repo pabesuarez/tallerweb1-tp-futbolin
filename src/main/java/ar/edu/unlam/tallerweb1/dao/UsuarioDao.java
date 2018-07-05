@@ -10,4 +10,5 @@ public interface UsuarioDao {
 	Usuario consultarUsuario (Usuario usuario);
 	List<Usuario> listarUsuarios ();
 	Usuario buscarUsuarioPorId(Long idUsuario);
+	boolean nuevoUsuario(Usuario usuario);
 }

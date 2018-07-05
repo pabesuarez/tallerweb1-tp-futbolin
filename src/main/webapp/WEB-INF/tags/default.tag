@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <%@attribute name="body" fragment="true"%>
+<%@attribute name="scripts" fragment="true"%>
 <html>
 	<head>
 	    <link href="css/bootstrap.min.css" rel="stylesheet" >
@@ -20,5 +21,6 @@
 		</div>
 		<script src="js/jquery-1.11.3.min.js" ></script>
 		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		    <jsp:invoke fragment="scripts"/>
 	</body>
 </html>
