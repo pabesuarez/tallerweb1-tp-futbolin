@@ -15,8 +15,8 @@ public class Partido {
 	@ManyToOne
 	private Usuario organizador;
 	private String nombreCancha;
-	private Long latitud;
-	private Long longitud;
+	private Double latitud;
+	private Double longitud;
 	private String descripcion;
 	private Date fecha;
 	
@@ -51,18 +51,19 @@ public class Partido {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Long getLatitud() {
+	public Double getLatitud() {
 		return latitud;
 	}
-	public void setLatitud(Long latitud) {
+	public void setLatitud(Double latitud) {
 		this.latitud = latitud;
 	}
-	public Long getLongitud() {
+	public Double getLongitud() {
 		return longitud;
 	}
-	public void setLongitud(Long longitud) {
+	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
+
 	
 	
 	

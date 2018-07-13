@@ -21,6 +21,8 @@ public class ControladorPruebas {
 	
 	@Inject
 	private ServicioPruebas servicioPruebas;
+	@Inject
+	private HttpServletRequest request;
 	
 	@RequestMapping("/loginprueba")
 	public ModelAndView p_login() {
@@ -32,7 +34,7 @@ public class ControladorPruebas {
 	
 	
 	@RequestMapping("/loginid/{id}")
-	public String p_loginporid(@PathVariable("id") Long uid, HttpServletRequest request) {
+	public String p_loginporid(@PathVariable("id") Long uid) {
 		Usuario u = servicioPruebas.Buscar(uid);
 		request.getSession().setAttribute("uid", u.getId());
 		request.getSession().setAttribute("email", u.getEmail());

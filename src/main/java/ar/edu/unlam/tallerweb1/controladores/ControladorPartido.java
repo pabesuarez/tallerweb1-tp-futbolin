@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,10 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.Cupo;
 import ar.edu.unlam.tallerweb1.modelo.Partido;
 import ar.edu.unlam.tallerweb1.modelo.Puntos;
+import ar.edu.unlam.tallerweb1.modelo.Solicitud;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.formularios.FormNuevoCupo;
+import ar.edu.unlam.tallerweb1.modelo.formularios.FormNuevoPartido;
 import ar.edu.unlam.tallerweb1.servicios.ServicioCupo;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPartido;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPuntos;
+import ar.edu.unlam.tallerweb1.servicios.ServicioSolicitud;
 
 
 
@@ -29,13 +34,14 @@ public class ControladorPartido {
 	@Inject
 	private ServicioPartido servicioPartido;
 	
-	
 	@Inject
 	private ServicioPuntos servicioPuntos;
 	
-
 	@Inject
 	private ServicioCupo servicioCupo;
+	
+	@Inject
+	private HttpServletRequest request;
 
 	@RequestMapping("/crearPartido")
 	public ModelAndView CrearPartido() {
@@ -54,9 +60,34 @@ public class ControladorPartido {
 	
 	@RequestMapping(path = "/detallePartido/{idPartido}")
 		public ModelAndView detallePartido(@PathVariable long idPartido) {
+			Long uid = (Long)request.getSession().getAttribute("uid");
 			ModelMap model = new ModelMap();
-			model.put("partido", servicioPartido.buscarId(idPartido));
-			model.put("cupos", servicioCupo.listarCuposPorPartido(idPartido));
+			Partido partido =  servicioPartido.buscarId(idPartido);
+			List<Cupo> listaCupos = servicioCupo.listarCuposPorPartido(idPartido);
+			
+			model.put("partido", partido);
+			
+			if (uid == partido.getOrganizador().getId()) {
+				List<Solicitud> solicitudes = servicioPartido.buscarSolicitudPartido(idPartido);
+				FormNuevoCupo form = new FormNuevoCupo();
+				model.put("FormNuevoCupo",form);
+				model.put("solicitudes",solicitudes);
+			}else{
+				List<Long> cupoConSolicitud = new ArrayList<Long>();
+				
+				for(int i = 0; i<listaCupos.size(); i+=1){
+					if (servicioPartido.buscarSolicitudDeUsuario(listaCupos.get(i).getId(), uid)){
+						cupoConSolicitud.add(listaCupos.get(i).getId());
+					}
+				}
+				
+				
+				
+				model.put("cuposConSolicitud", cupoConSolicitud);
+			}
+			
+			model.put("cupos", listaCupos);
+			
 			return new ModelAndView("detallePartido",model);
 			
 		}
@@ -93,12 +124,9 @@ public class ControladorPartido {
 
 
 		model.put("claveIdCupo", idCupo);
-
 		model.put("claveNombre", nombre);
-
 		model.put("claveApellido", apellido);
 		model.put("clavePosicion", posicion);
-		
 		model.put("objetoPuntos", puntos);
 		
 		
@@ -109,7 +137,7 @@ public class ControladorPartido {
 		}
 
 	@RequestMapping(path = "/PuntajeGuardado", method = RequestMethod.POST)
-	public ModelAndView CalificacionGuardada(@ModelAttribute("objetoPuntos") Puntos puntaje, HttpServletRequest request) {
+	public ModelAndView CalificacionGuardada(@ModelAttribute("objetoPuntos") Puntos puntaje) {
 		ModelMap model = new ModelMap();
 		
 	
@@ -129,13 +157,39 @@ public class ControladorPartido {
 	}
 	
 	@RequestMapping(path = "/nuevoPartido",method=RequestMethod.POST)
-	public ModelAndView crear(@ModelAttribute("partido") Partido partido, HttpServletRequest request){
-		boolean registro = servicioPartido.nuevoPartido(partido,((long)request.getAttribute("uid")));
+	public ModelAndView crear(@ModelAttribute("partido") FormNuevoPartido partido){
+		boolean registro = servicioPartido.nuevoPartido(partido,((long)request.getSession().getAttribute("uid")));
 		if(registro) {
 			return new ModelAndView("redirect:/index");
 		}else {
-			return null;
+			return new ModelAndView("redirect:/crearPartido");
 		}
 	}
 	
+	@RequestMapping(path = "/nuevoCupo",method=RequestMethod.POST)
+	public String nuevoCupo(@ModelAttribute("FormNuevoCupo") FormNuevoCupo cupo){
+		servicioPartido.nuevoCupo(cupo);
+		return "redirect:"+request.getHeader("Referer");
 	}
+	
+	
+	@RequestMapping(path = "/solicitar/{idCupo}")
+	public String solicitar(@PathVariable long idCupo) {
+		Long uid = (Long)request.getSession().getAttribute("uid");
+		servicioPartido.solicitar(uid,idCupo);
+		return "redirect:"+request.getHeader("Referer");
+		}
+	
+	@RequestMapping(path = "/quitarSolicitud/{idCupo}")
+	public String quitarSolicitud(@PathVariable long idCupo) {
+		Long uid = (Long)request.getSession().getAttribute("uid");
+		servicioPartido.quitarSolicitud(uid,idCupo);
+		return "redirect:"+request.getHeader("Referer");
+		}
+	
+	@RequestMapping(path = "/aceptarSolicitud/{idSolicitud}")
+	public String aceptarSolicitud(@PathVariable long idSolicitud) {
+		servicioPartido.aceptarSolicitud(idSolicitud);
+		return "redirect:"+request.getHeader("Referer");
+		}
+}

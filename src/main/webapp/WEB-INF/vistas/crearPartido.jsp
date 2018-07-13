@@ -1,7 +1,8 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
     
     <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 	<t:default>
@@ -17,7 +18,6 @@
 					    <div id="map" style="width: 100%; height: 400px;"></div>
 						<form:input path="latitud" id="latitud" type="hidden"  /><br/>
 						<form:input path="longitud" id="longitud" type="hidden"  /><br/>
-						
 						<button class="btn" type="Submit">Crear partido</button>
 					</form:form>	
 				</div>
@@ -26,8 +26,8 @@
 		<jsp:attribute name="scripts">
 			<script src="js/axios.min.js" type="text/javascript"></script>
 			<script src="js/mapa.js" type="text/javascript"></script>
-				<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLj1fpj5ZVqBThB6azonzdnZ10iT7rec4&callback=initMap">
-    </script>
+			<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLj1fpj5ZVqBThB6azonzdnZ10iT7rec4&callback=initMap">
+	    	</script>	
 		</jsp:attribute>
 	</t:default>

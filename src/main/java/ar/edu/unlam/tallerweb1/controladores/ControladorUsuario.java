@@ -28,11 +28,12 @@ public class ControladorUsuario {
 	@Inject
 	private ServicioUsuario servicioUsuario;
 	
+	@Inject
+	private HttpServletRequest request;
+	
 	@RequestMapping("/mispartidos")
-	public ModelAndView mispartidos(HttpServletRequest request) {
+	public ModelAndView mispartidos() {
 		ModelMap modelo = new ModelMap();
-		
-		
 		if (request.getSession().getAttribute("uid") != null) {	
 			long uid = Long.parseLong(request.getSession().getAttribute("uid").toString());
 			List<Partido> lista = servicioPartido.buscarPorUsuario(uid);
@@ -60,6 +61,12 @@ public class ControladorUsuario {
 		}else {
 			return null;
 		}
+	}
+	
+	@RequestMapping("/usercp")
+	public ModelAndView panelControl() {
+		ModelMap model = new ModelMap();
+		return new ModelAndView("usercp",model);
 	}
 	
 }

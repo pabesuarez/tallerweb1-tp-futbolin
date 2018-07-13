@@ -12,7 +12,6 @@ function initMap(){
 		var lat=response.data.results[0].geometry.location.lat;
 		var lng=response.data.results[0].geometry.location.lng;
 		var ubicacion = {lat: lat, lng: lng};
-		console.log(ubicacion);
 		document.getElementById("latitud").value=lat;
 		document.getElementById("longitud").value=lng;
 		

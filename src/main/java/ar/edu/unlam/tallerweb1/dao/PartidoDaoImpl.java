@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.dao;
 
 import ar.edu.unlam.tallerweb1.modelo.Partido;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
+import ar.edu.unlam.tallerweb1.modelo.formularios.FormNuevoPartido;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -27,14 +28,23 @@ public class PartidoDaoImpl implements PartidoDao {
 	}
 	
 	@Override
-	public boolean nuevoPartido(Partido partido,long uid) {
+	public boolean nuevoPartido(FormNuevoPartido partido,long uid) {
 		Usuario organizador = (Usuario)sessionFactory.getCurrentSession().createCriteria(Usuario.class)
-							  .add(Restrictions.eq("Id",uid))
+							  .add(Restrictions.eq("id",uid))
 							  .uniqueResult();
-		partido.setOrganizador(organizador);
-		sessionFactory.getCurrentSession()
-		.save(partido);
+		if (organizador != null) {
+			Partido nuevo = new Partido();
+			nuevo.setNombreCancha(partido.getNombreCancha());
+			nuevo.setDescripcion(partido.getDescripcion());
+			nuevo.setLatitud(Double.parseDouble(partido.getLatitud()));
+			nuevo.setLongitud(Double.parseDouble(partido.getLongitud()));
+			nuevo.setOrganizador(organizador);
+			sessionFactory.getCurrentSession()
+			.save(nuevo);
 		return true;
+		}else {
+			return false;
+		}
 	}
 
 	@Override

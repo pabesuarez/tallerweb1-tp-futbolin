@@ -28,8 +28,7 @@
 			<tr>
 				<td>${partido.fecha}</td>
 				<td><a href="/futbolin/detallePartido/${partido.id}">${partido.nombreCancha}</a></td>
-				<td>${partido.direccion.calle}${partido.direccion.numero},
-					${partido.direccion.localidad}</td>
+				<td></td>
 				<td>${partido.descripcion}</td>
 				<td><a href="/futbolin/finalizarPartido/${partido.id}">Finalizar Partido</a></td>
 			</tr>
