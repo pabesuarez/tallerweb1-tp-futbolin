@@ -20,5 +20,6 @@ public interface ServicioPartido {
 	public void solicitar(Long idUsuario, Long idCupo);
 	public void quitarSolicitud(Long idUsuario, Long idCupo);
 	public void aceptarSolicitud(Long solicitud);
+	public void cancelarCupo(Long idCupo);
 	public List<Solicitud> buscarSolicitudPartido(Long idPartido);
 }

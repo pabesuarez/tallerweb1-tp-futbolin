@@ -1,6 +1,10 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.math.BigDecimal;
 import java.sql.Date;
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,10 +19,13 @@ public class Partido {
 	@ManyToOne
 	private Usuario organizador;
 	private String nombreCancha;
-	private Double latitud;
-	private Double longitud;
+	private String direccion;
+	@Column(name="latitud", columnDefinition="Decimal(10,7)")
+	private BigDecimal latitud;
+	@Column(name="longitud", columnDefinition="Decimal(10,7)")
+	private BigDecimal longitud;
 	private String descripcion;
-	private Date fecha;
+	private Timestamp fecha;
 	
 
 	public Long getId() {
@@ -45,24 +52,32 @@ public class Partido {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public Date getFecha() {
+	
+	public Timestamp getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(Timestamp fecha) {
 		this.fecha = fecha;
 	}
-	public Double getLatitud() {
+	public BigDecimal getLatitud() {
 		return latitud;
 	}
-	public void setLatitud(Double latitud) {
+	public void setLatitud(BigDecimal latitud) {
 		this.latitud = latitud;
 	}
-	public Double getLongitud() {
+	public BigDecimal getLongitud() {
 		return longitud;
 	}
-	public void setLongitud(Double longitud) {
+	public void setLongitud(BigDecimal longitud) {
 		this.longitud = longitud;
 	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	
 
 	
 	

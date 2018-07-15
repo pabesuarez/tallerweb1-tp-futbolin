@@ -13,7 +13,7 @@
 					<form:form class="form-group" action="nuevoPartido" method="POST" modelAttribute="partido">
 						Cancha:<form:input path="nombreCancha" class="form-control" id="cancha" type="text"  /><br/>
 						Descripcion:<form:input path="descripcion" class="form-control" id="descripcion" type="text"  /><br/>
-						Direccion:<input class ="form-control" type="text" id="direccion">
+						Direccion:<form:input path="direccion" class ="form-control" type="text" id="direccion"/>
 						<button type="button" onClick="initMap()">buscar</button>
 					    <div id="map" style="width: 100%; height: 400px;"></div>
 						<form:input path="latitud" id="latitud" type="hidden"  /><br/>

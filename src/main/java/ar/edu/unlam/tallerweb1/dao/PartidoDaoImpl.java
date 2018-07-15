@@ -9,7 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -34,10 +34,12 @@ public class PartidoDaoImpl implements PartidoDao {
 							  .uniqueResult();
 		if (organizador != null) {
 			Partido nuevo = new Partido();
+			nuevo.setFecha(new Timestamp(System.currentTimeMillis()));
 			nuevo.setNombreCancha(partido.getNombreCancha());
 			nuevo.setDescripcion(partido.getDescripcion());
-			nuevo.setLatitud(Double.parseDouble(partido.getLatitud()));
-			nuevo.setLongitud(Double.parseDouble(partido.getLongitud()));
+			nuevo.setLatitud(partido.getLatitud());
+			nuevo.setDireccion(partido.getDireccion());
+			nuevo.setLongitud(partido.getLongitud());
 			nuevo.setOrganizador(organizador);
 			sessionFactory.getCurrentSession()
 			.save(nuevo);

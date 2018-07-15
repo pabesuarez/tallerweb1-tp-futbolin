@@ -12,7 +12,7 @@
 			<p>nombre de la cancha: ${partido.nombreCancha}</p>
 			<p>organizador: ${partido.organizador.id}
 				${partido.organizador.apellido}</p>
-			<p>detalles: ${partido.descripcion}</p>
+			<p>detalles: ${partido.descripcion} ${partido.latitud} ${partido.longitud}</p>
 
 	<div id="map" style="width: 100%; height: 400px;"></div>
 	
@@ -31,13 +31,15 @@
 				</thead>
 					<c:forEach items="${cupos}" var="cupo">
 					<tr>
-						<td>${cupo.posicion}]</td>
+						<td>${cupo.posicion}</td>
 						<c:choose>
 							<c:when test="${cupo.usuario != null}">
 								<td>${cupo.usuario.nombre} ${cupo.usuario.apellido}</td>
+								<td><a href="${url}/cancelarCupo/${cupo.id}">Cancelar</a></td>
 							</c:when>
 							<c:otherwise>
 								<td>Vacante</td>
+								<td></td>
 							</c:otherwise>
 						</c:choose>
 					</tr>
@@ -107,13 +109,14 @@
 	
 		</jsp:attribute>
 		<jsp:attribute name="scripts">
-	
-	
 	<script>
 
 function initMap() {
-
-  var ubicacion = {lat: ${partido.latitud}, lng: ${partido.longitud}};
+ 
+	
+	var lat=${partido.latitud};
+	var lng=${partido.longitud};
+	var ubicacion = {lat: lat, lng: lng};
   var map = new google.maps.Map(
       document.getElementById('map'), {zoom: 16, center: ubicacion});
 

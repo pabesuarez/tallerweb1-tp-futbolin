@@ -20,7 +20,20 @@
 					logeado como: ${sessionScope.email}
 				</div>
 			</div>
-			<jsp:invoke fragment="body"/>
+			<div class="row">
+				<div class="col-md-3">
+					<div class ="list-group">
+						<a href="${url}/usercp" class="list-group-item">Panel de control</a>
+						<a href="${url}/misPartidos" class="list-group-item">Mis partidos</a>
+						<a href="${url}/buscarPartidos" class="list-group-item">Buscar partidos</a>
+						<a href="${url}/usercp" class="list-group-item">Mi historial</a>
+					</div>	
+				</div>
+				<div class="col-md-9">
+					<jsp:invoke fragment="body"/>
+				</div>
+			</div>
+			
 		</div>
 		<script src="${url}/js/jquery-1.11.3.min.js" ></script>
 		<script src="${url}/js/bootstrap.min.js" type="text/javascript"></script>

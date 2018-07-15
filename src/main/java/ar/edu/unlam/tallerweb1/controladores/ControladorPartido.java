@@ -58,6 +58,19 @@ public class ControladorPartido {
 		return new ModelAndView("buscarPartidos", model);
 	}
 	
+	@RequestMapping("/misPartidos")
+	public ModelAndView mispartidos() {
+		ModelMap modelo = new ModelMap();
+		if (request.getSession().getAttribute("uid") != null) {	
+			long uid = Long.parseLong(request.getSession().getAttribute("uid").toString());
+			List<Partido> lista = servicioPartido.buscarPorUsuario(uid);
+			modelo.put("lista",lista);
+			return new ModelAndView ("partidos",modelo);
+		} else {
+			return new ModelAndView ("redirect:/loginprueba");
+		}
+	}
+	
 	@RequestMapping(path = "/detallePartido/{idPartido}")
 		public ModelAndView detallePartido(@PathVariable long idPartido) {
 			Long uid = (Long)request.getSession().getAttribute("uid");
@@ -192,4 +205,12 @@ public class ControladorPartido {
 		servicioPartido.aceptarSolicitud(idSolicitud);
 		return "redirect:"+request.getHeader("Referer");
 		}
+	
+	@RequestMapping(path = "/cancelarCupo/{idCupo}")
+	public String cancelarCupo(@PathVariable long idCupo) {
+		servicioPartido.cancelarCupo(idCupo);
+		return "redirect:"+request.getHeader("Referer");
+		}
+	
+	
 }

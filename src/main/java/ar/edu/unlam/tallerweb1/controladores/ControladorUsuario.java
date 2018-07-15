@@ -31,18 +31,7 @@ public class ControladorUsuario {
 	@Inject
 	private HttpServletRequest request;
 	
-	@RequestMapping("/mispartidos")
-	public ModelAndView mispartidos() {
-		ModelMap modelo = new ModelMap();
-		if (request.getSession().getAttribute("uid") != null) {	
-			long uid = Long.parseLong(request.getSession().getAttribute("uid").toString());
-			List<Partido> lista = servicioPartido.buscarPorUsuario(uid);
-			modelo.put("lista",lista);
-			return new ModelAndView ("mispartidos",modelo);
-		} else {
-			return new ModelAndView ("redirect:/loginprueba");
-		}
-	}
+
 	
 	
 	@RequestMapping("/Registro")

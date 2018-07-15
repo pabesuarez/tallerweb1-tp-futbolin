@@ -56,8 +56,9 @@ public class SolicitudDaoImpl implements SolicitudDao{
 	public List<Solicitud> buscarSolicitudPartido(Long idPartido) {
 		return sessionFactory.getCurrentSession().createCriteria(Solicitud.class)
 				.createAlias("cupo.partido", "p")
+				.createAlias("cupo", "c")
 				.add(Restrictions.eq("p.id",idPartido))
-
+				.add(Restrictions.isNull("c.usuario"))
 			    .list();
 	}
 

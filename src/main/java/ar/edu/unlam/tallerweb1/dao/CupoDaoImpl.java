@@ -90,6 +90,18 @@ public class CupoDaoImpl implements CupoDao {
 		sessionFactory.getCurrentSession()
 		.save(nuevo);
 	}
+	
+
+	@Override
+	public void cancelarCupo(Long idCupo) {
+		Cupo c = (Cupo) sessionFactory.getCurrentSession()
+				.createCriteria(Cupo.class)
+				.add(Restrictions.eq("id", idCupo))
+				.uniqueResult();
+		c.setUsuario(null);
+		sessionFactory.getCurrentSession().update(c);
+		
+	}
 
 	
 

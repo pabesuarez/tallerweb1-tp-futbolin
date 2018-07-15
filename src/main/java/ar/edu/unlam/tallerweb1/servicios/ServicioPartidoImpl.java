@@ -99,6 +99,12 @@ public class ServicioPartidoImpl implements ServicioPartido{
 		
 	}
 
+	@Override
+	public void cancelarCupo(Long idCupo) {
+		servicioCupoDao.cancelarCupo(idCupo);
+		
+	}
+
 
 	
 	

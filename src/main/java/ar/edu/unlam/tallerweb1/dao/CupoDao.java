@@ -16,4 +16,5 @@ public interface CupoDao {
 	public void eliminar(Cupo cupo);
 	public Usuario buscarJugadorPorId(Long idUsuario);
 	public void nuevoCupo(FormNuevoCupo cupo);
+	public void cancelarCupo(Long idCupo);
 }
