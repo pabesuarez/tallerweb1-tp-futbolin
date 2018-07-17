@@ -41,37 +41,4 @@ public class UsuariosTest extends SpringTest{
 		assertThat(usuarios.size()).isEqualTo(2);
 	}
 	
-	@Test
-	@Transactional @Rollback(true)
-	public void buscarPartidos() {
-		
-		Usuario usuario1 = new Usuario();
-		Partido partido1 = new Partido();
-	//	Direccion direccion1= new Direccion("buenos aires", "San justo", "arieta", 111);
-		
-
-		partido1.setOrganizador(usuario1);
-		
-		Partido partido2 = new Partido();
-		Usuario usuario2 = new Usuario();
-	//	Direccion direccion2= new Direccion("capital federal", "capital federal", "triunvirato", 5400);
-		partido1.setOrganizador(usuario2);
-		
-		getSession().save(usuario1);
-		getSession().save(usuario2);
-		
-		
-		getSession().save(partido1);
-		getSession().save(partido2);
-		
-		List<Partido> resultadoPartidos = getSession()
-				.createCriteria(Partido.class)
-				.createAlias("direccion", "dir")
-				.add(Restrictions.eq("dir.calle", "triunvirato"))
-				.list();
-		
-		assertThat(resultadoPartidos.size()).isEqualTo(1);
-		getSession().close();
-				
-	}
 }
